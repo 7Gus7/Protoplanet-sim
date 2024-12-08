@@ -29,7 +29,7 @@ p_ie = 0.5 # probability of inelastic collisions, adjust to realism if possible
 
 #inner variables
 n = convert_to_particles(m)  # number of particles
-n = scale_down(n, scaling_factor=1e-53) # should be 1e-52
+n = scale_down(n, scaling_factor=1e-52) # should be 1e-52
 critical_mass_in_particles = 0.08 * n # should be some % of n
 total_particles = n + (n * 0.01) # 99% of the cloud is gas and 1% is dust
 num_collisions = 0
@@ -156,12 +156,9 @@ def find_object(particle):
     
 
 def print_stats():
-    scaling_fac = 1e-53 #scaling factor should be 1e-52
-    print("Scaling factor: ", scaling_fac)
     print("Number of collisions: ", num_collisions)
     print("Number of inelastic collisions: ", num_inelastic_collisions)
     print("Time taken to reach critical mass (Clock): ", Clock)
-    
     print("Largest object size: ", largest_object_size)
     
     output_data_li = []
