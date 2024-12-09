@@ -23,13 +23,13 @@ high_dens_vel = 0.7 # need to confirm
 low_dens_vel = 0.3 # need to confirm
 
 #current iterations inputs
-m = G_sun
-p = low_dens_vel #probability of collisions
+m = G_low 
+p = high_dens_vel #probability of collisions
 p_ie = 0.5 # probability of inelastic collisions, adjust to realism if possible
 
 #inner variables
 n = convert_to_particles(m)  # number of particles
-n = scale_down(n, scaling_factor=1e-52) # should be 1e-52
+n = scale_down(n, scaling_factor=1e-53) # should be 1e-52
 critical_mass_in_particles = 0.08 * n # should be some % of n
 total_particles = n + (n * 0.01) # 99% of the cloud is gas and 1% is dust
 num_collisions = 0
@@ -183,6 +183,9 @@ def print_stats():
     plt.scatter(x, y)
     plt.xlabel("Object Number")
     plt.ylabel("Object Size")
+    plt.title(f"scatter_for_{m},{p},{seed}")
+    plt.show()
+    plt.savefig(f"scatter_for_{m},{p},{seed}.png")  # Save plot as an image
 
 if __name__ == "__main__":
     main_simulation()
