@@ -15,8 +15,8 @@ def main():
     # create average scatter plots for a run across diff seeds
 
     seeds = [10, 11, 12, 13, 14]
-    probab = 0.7 #0.7 or 0.3
-    g_type = 0.8 #low = 0.8, sun = 1, high = 1.04
+    probab = 0.3 #0.7 or 0.3
+    g_type = 1.04 #low = 0.8, sun = 1, high = 1.04
     time_taken_for_critical_mass_across_seeds = []
     sum_sizes = 0
     average_object_size_across_seeds_li = []
@@ -30,7 +30,7 @@ def main():
     for seed in seeds:
         print("SEED IS ", seed)
         
-        with open(f"{seed}/output_for_{g_type},{probab},{seed}.txt") as file:
+        with open(f"output_for_{g_type},{probab},{seed}.txt") as file:
             lines = file.readlines()
             time_taken_for_critical_mass = float(lines[2].split(":")[1].strip())
             time_taken_for_critical_mass_across_seeds.append(time_taken_for_critical_mass)
